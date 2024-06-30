@@ -24,7 +24,7 @@ paths:
     get: 
       summary: Recupera todos os departamentos
       responses:
-        '200':
+        200:
           description: Sucesso
           content:
             application/json:
@@ -37,5 +37,29 @@ paths:
                       type: string
                     name:
                       type: string
-                    createdAt:
-                      type: string
+  /departamentos/{id}:
+    get:
+      summary: Recuperar um departamento por ID
+      parameters: 
+      - name: id
+        in: path
+        schema: 
+          type: string
+        required: true
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+        404:
+          description: Departamento não encontrado.
+          content:
+            application/json:
+              example: "Not Found"
