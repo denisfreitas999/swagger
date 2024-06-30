@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
-  title: API de consultório
-  description: API para controlar médicos e suas especialidades no consultório.
+  title: API de departamentos
+  description: API para controlar departamentos.
   version: 0.0.1
   termsOfService: https://mockapi.io/
   contact:
@@ -14,3 +14,28 @@ info:
 externalDocs:
   description: Documentação burocrática
   url: https://mockapi.io/
+servers:
+  - url: https://66818f7204acc3545a0705fd.mockapi.io/
+    description: API Teste
+  - url: https://www.google.com
+    description: API de Produção
+paths:
+  /departamentos:
+    get: 
+      summary: Recupera todos os departamentos
+      responses:
+        '200':
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    createdAt:
+                      type: string
