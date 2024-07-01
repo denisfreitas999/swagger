@@ -37,15 +37,30 @@ paths:
                       type: string
                     name:
                       type: string
+    post:
+      summary: Cria novo departamento
+      description: "Através deste endpoint é possível criar novos departamentos"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: 
+                name:
+                  type: string
+      responses:
+        201:
+          description: "Sucesso"
+      
   /departamentos/{id}:
+    parameters: 
+        - name: id
+          in: path
+          schema: 
+            type: string
+          required: true
     get:
       summary: Recuperar um departamento por ID
-      parameters: 
-      - name: id
-        in: path
-        schema: 
-          type: string
-        required: true
       responses:
         200:
           description: Sucesso
