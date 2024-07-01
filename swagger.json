@@ -1,0 +1,207 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "API de departamentos",
+      "description": "API para controlar departamentos.",
+      "version": "0.0.1",
+      "termsOfService": "https://mockapi.io/",
+      "contact": {
+        "name": "Suporte a Devs",
+        "email": "contato@example.com",
+        "url": "https://mockapi.io/"
+      },
+      "license": {
+        "name": "Licença GPLv3",
+        "url": "https://www.gnu.org/licenses/gpl-3.0.html"
+      }
+    },
+    "externalDocs": {
+      "description": "Documentação burocrática",
+      "url": "https://mockapi.io/"
+    },
+    "servers": [
+      {
+        "url": "https://66818f7204acc3545a0705fd.mockapi.io/",
+        "description": "API Teste"
+      },
+      {
+        "url": "https://www.google.com",
+        "description": "API de Produção"
+      }
+    ],
+    "paths": {
+      "/departamentos": {
+        "get": {
+          "summary": "Recupera todos os departamentos",
+          "responses": {
+            "200": {
+              "description": "Busca dos departamentos realizada com sucesso.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Departamento"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Cria novo departamento",
+          "description": "Através deste endpoint é possível criar novos departamentos",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Departamento"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Departamento criado com sucesso."
+            }
+          }
+        }
+      },
+      "/departamentos/{id}": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "get": {
+          "summary": "Recuperar um departamento por ID",
+          "responses": {
+            "200": {
+              "description": "Departamento buscado com sucesso.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Departamento"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Departamento não encontrado.",
+              "content": {
+                "application/json": {
+                  "example": "Not Found"
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "summary": "Atualiza um departamento por ID",
+          "description": "Este endpoint é responsável por atualizar um departamento através do seu ID",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Departamento"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Departamento atualizado com sucesso.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Departamento"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Erro ao atualizar o departamento.",
+              "content": {
+                "application/json": {
+                  "example": "Bad Request"
+                }
+              }
+            },
+            "500": {
+              "description": "Erro interno de servidor.",
+              "content": {
+                "application/json": {
+                  "example": "Internal Server Error"
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deleta um departamento por ID",
+          "description": "Este endpoint é responsável por deletar um departamento através de seu ID",
+          "responses": {
+            "200": {
+              "description": "Departamento deletado com sucesso.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Departamento"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Erro ao deletar o departamento.",
+              "content": {
+                "application/json": {
+                  "example": "Bad Request"
+                }
+              }
+            },
+            "500": {
+              "description": "Erro interno de servidor.",
+              "content": {
+                "application/json": {
+                  "example": "Internal Server Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "security": [
+      {
+        "auth": []
+      }
+    ],
+    "components": {
+      "schemas": {
+        "Departamento": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "securitySchemes": {
+        "auth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      }
+    }
+  }
