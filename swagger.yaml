@@ -39,7 +39,7 @@ paths:
                       type: string
     post:
       summary: Cria novo departamento
-      description: "Através deste endpoint é possível criar novos departamentos"
+      description: Através deste endpoint é possível criar novos departamentos
       requestBody:
         content:
           application/json:
@@ -50,7 +50,7 @@ paths:
                   type: string
       responses:
         201:
-          description: "Sucesso"
+          description: Departamento criado com sucesso.
       
   /departamentos/{id}:
     parameters: 
@@ -63,7 +63,7 @@ paths:
       summary: Recuperar um departamento por ID
       responses:
         200:
-          description: Sucesso
+          description: Departamento buscado com sucesso.
           content:
             application/json:
               schema:
@@ -77,4 +77,37 @@ paths:
           description: Departamento não encontrado.
           content:
             application/json:
-              example: "Not Found"
+              example: Not Found
+    put:
+      summary: Atualiza um departamento por ID
+      description: Este endpoint é responsável por atualizar um departamento através do seu ID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        200:
+          description: Departamento atualizado com sucesso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+        400:
+          description: Erro ao atualizar o departamento.
+          content:
+            application/json:
+              example: Bad Request
+        500:
+          description: Erro interno de servidor.
+          content:
+            application/json:
+              example: Internal Server Error
