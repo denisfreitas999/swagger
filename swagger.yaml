@@ -111,3 +111,28 @@ paths:
           content:
             application/json:
               example: Internal Server Error
+    delete:
+      summary: Deleta um departamento por ID
+      description: Este endpoint é responsável por deletar um departamento através de seu ID
+      responses:
+        200:
+          description: Departamento deletado com sucesso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+        400:
+          description: Erro ao deletar o departamento.
+          content:
+            application/json:
+              example: Bad Request
+        500:
+          description: Erro interno de servidor.
+          content:
+            application/json:
+              example: Internal Server Error  
