@@ -25,18 +25,13 @@ paths:
       summary: Recupera todos os departamentos
       responses:
         200:
-          description: Sucesso
+          description: Busca dos departamentos realizada com sucesso.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  type: object
-                  properties:
-                    id:
-                      type: string
-                    name:
-                      type: string
+                  $ref: "#/components/schemas/Departamento"
     post:
       summary: Cria novo departamento
       description: Através deste endpoint é possível criar novos departamentos
@@ -44,10 +39,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties: 
-                name:
-                  type: string
+              $ref: "#/components/schemas/Departamento"
       responses:
         201:
           description: Departamento criado com sucesso.
@@ -67,12 +59,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  name:
-                    type: string
+                $ref: "#/components/schemas/Departamento"
         404:
           description: Departamento não encontrado.
           content:
@@ -85,22 +72,14 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
+              $ref: "#/components/schemas/Departamento"
       responses:
         200:
           description: Departamento atualizado com sucesso.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  name:
-                    type: string
+                $ref: "#/components/schemas/Departamento"
         400:
           description: Erro ao atualizar o departamento.
           content:
@@ -120,12 +99,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  name:
-                    type: string
+               $ref: "#/components/schemas/Departamento"
         400:
           description: Erro ao deletar o departamento.
           content:
@@ -136,3 +110,12 @@ paths:
           content:
             application/json:
               example: Internal Server Error  
+components:
+  schemas:
+    Departamento:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
