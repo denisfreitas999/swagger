@@ -110,6 +110,8 @@ paths:
           content:
             application/json:
               example: Internal Server Error  
+security: 
+- auth: []
 components:
   schemas:
     Departamento:
@@ -119,3 +121,7 @@ components:
           type: string
         name:
           type: string
+  securitySchemes:
+    auth:
+      type: http
+      scheme: bearer
